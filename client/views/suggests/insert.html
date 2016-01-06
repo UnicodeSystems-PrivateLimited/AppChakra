@@ -1,0 +1,37 @@
+<template name="suggestsInsert">    
+    <div class="container">
+        <!--Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li><a href="{{pathFor 'sitesIndex'}}">Home</a></li>
+            <li><a href="{{pathFor 'suggestsIndex'}}">Suggests</a></li>
+            <li class="active">insert</li>
+        </ol>
+
+        <div id="basic-form">
+            <div class="title">
+                <h3 class="pull-left">Insert Suggests</h3>
+            </div>
+            <div class="clearfix"></div>
+    <b>Posts List</b><br />
+            {{#each sugPosts}}
+                {{title}}
+                <a class="btn btn-success" id= "sugPostsAdd" href="#">Add to Suggestions List</a>
+                <br /><br />
+            {{/each}}
+    <b>Campaigns List</b><br />
+            {{#each sugCampaigns}}
+                {{title}}
+                <a class="btn btn-success" id= "sugCampsAdd" href="#">Add to Suggestions List</a>
+                <br /><br />
+            {{/each}}
+    <b>Projects List</b><br />
+            {{#each sugProjects}}
+                {{title}}
+                <a class="btn btn-success" id= "sugProjsAdd" href="#">Add to Suggestions List</a>
+                <br /><br />
+            {{/each}}
+
+            {{> suggests_form}}
+        </div>        
+    </div>
+</template>

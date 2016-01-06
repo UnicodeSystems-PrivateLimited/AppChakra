@@ -1,0 +1,108 @@
+<template name="campaignsView">
+    <div class="container">
+        <!--Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li><a href="{{pathFor 'sitesIndex'}}">Home</a></li>
+            <li><a href="{{pathFor 'campaignsIndex'}}">Campaigns</a></li>
+            <li class="active">view</li>
+        </ol>
+
+        {{#with model}}
+        <div class="title">
+            <h3 class="pull-left">View Campaigns #{{_id}}</h3>
+            <div class="toolbar pull-right">
+                <a href="{{pathFor 'CampUpdateInsertCampUpdatesBlogId'}}" class="btn btn-default">Add Campaign Update</a>
+                <a href="{{pathFor 'campaignsIndex'}}" class="btn btn-default">Back</a>
+                <a href="{{pathFor 'campaignsUpdate'}}" class="btn btn-info">Update</a>
+                {{#if campFinish pubstatus}}
+                <a id="btnRepublish" class="btn btn-danger">Republish</a>
+                {{else}}
+                {{#if campPublish pubstatus}}
+                <a id="btnFinish" class="btn btn-danger">Finish</a>
+                {{else}}
+                <a id="btnRemove" class="btn btn-danger">Remove</a>
+                <a id="btnPublish" class="btn btn-danger">Publish</a>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+        <!--{{> campUpdatesList model}}-->
+        <div class="clearfix"></div><br><br>
+        <div class="sampaign-details">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Current Status : </b></td>
+                        <td>{{pubstatus}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Campaign Type</b></td>
+                        <td>{{campType ctype}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Campaign Location</b></td>
+                        <td>{{location}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Target location</b></td>
+                        <td>{{tlocation}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Causes</b></td>
+                        <td>{{causes}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Title</b></td>
+                        <td>{{title}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Short Description</b></td>
+                        <td>{{shortdscrption}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Long Description</b></td>
+                        <td>{{longdscrption}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Your Story behind this</b></td>
+                        <td>{{story}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Cover Image</b></td>
+                        <td><img src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>
+                    </tr>
+                    <!-- Auto save Fields-->
+                    <tr>
+                        <td><b>Created at</b></td>
+                        <td>{{meteorisFormatter "dateTime" createdAt}}</td>
+                    </tr>    
+
+                    <tr>
+                        <td><b>Updated at</b></td>
+                        <td>{{meteorisFormatter "dateTime" updatedAt}}</td>
+                    </tr>          
+
+                    <tr>
+                        <td><b>Created by</b></td>
+                        <td>{{createdUser.profile.name}}</td>
+                    </tr>              
+
+                    <tr>
+                        <td><b>Updated By</b></td>
+                        <td>{{updatedUser.profile.name}}</td>
+                    </tr>      
+
+                </tbody>
+            </table>
+        </div>
+        {{/with}}
+    </div>
+</template>
